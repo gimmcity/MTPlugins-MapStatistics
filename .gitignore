@@ -1,0 +1,15 @@
+.vs/
+build/
+**/Debug/
+**/Release/
+**/obj/
+
+*.user
+*.suo
+*.pdb
+*.ilk
+*.exp
+*.lib
+*.dll
+*.obj
+
