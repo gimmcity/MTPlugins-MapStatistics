@@ -12,7 +12,7 @@ namespace ms
 {
     namespace
     {
-        constexpr const char* kLabels[] = { "Brushes", "Patches", "Vertices", "Models", "Script Models", "Script Brushmodels", "Script Origins", "Script Structs", "FX", "Triggers", "Lights", "Reflection Probes" };
+        constexpr const char* kLabels[] = { "Brushes", "Patches", "Vertices", "Models", "Script Models", "Script Brushmodels", "Script Origins", "Script Structs", "FX", "Triggers", "Lights", "Reflection Probes", "Volume Decals" };
         constexpr uintptr_t kDrawText2D = 0x1411E1FE0;
         constexpr uintptr_t kDrawQuad2D = 0x1411E7DF0;
         constexpr uintptr_t kDebugFont = 0x145573AA0;

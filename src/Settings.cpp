@@ -22,8 +22,8 @@ namespace ms
         bool g_syncing = false;
         std::array<ModToolsWidget, static_cast<size_t>(StatId::Count)> g_checks{};
 
-        constexpr const char* kKeys[] = { "brushes", "patches", "vertices", "models", "script_models", "script_brushmodels", "script_origins", "script_structs", "fx", "triggers", "lights", "reflection_probes" };
-        constexpr const char* kLabels[] = { "Brushes", "Patches", "Vertices", "Models", "Script Models", "Script Brushmodels", "Script Origins", "Script Structs", "FX", "Triggers", "Lights", "Reflection Probes" };
+        constexpr const char* kKeys[] = { "brushes", "patches", "vertices", "models", "script_models", "script_brushmodels", "script_origins", "script_structs", "fx", "triggers", "lights", "reflection_probes", "volume_decals" };
+        constexpr const char* kLabels[] = { "Brushes", "Patches", "Vertices", "Models", "Script Models", "Script Brushmodels", "Script Origins", "Script Structs", "FX", "Triggers", "Lights", "Reflection Probes", "Volume Decals" };
 
         uint32_t ParseColor(std::string value)
         {

@@ -6,7 +6,7 @@
 namespace ms
 {
     enum class Position { BottomRight = 0, TopRight, TopLeft, BottomLeft };
-    enum class StatId { Brushes = 0, Patches, Vertices, Models, ScriptModels, ScriptBrushModels, ScriptOrigins, ScriptStructs, Fx, Triggers, Lights, ReflectionProbes, Count };
+    enum class StatId { Brushes = 0, Patches, Vertices, Models, ScriptModels, ScriptBrushModels, ScriptOrigins, ScriptStructs, Fx, Triggers, Lights, ReflectionProbes, VolumeDecals, Count };
 
     struct Settings
     {

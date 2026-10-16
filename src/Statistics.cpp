@@ -85,7 +85,7 @@ namespace ms
         struct Accumulator
         {
             uint64_t brushes = 0, patches = 0, vertices = 0, models = 0, scriptModels = 0, scriptBrushModels = 0;
-            uint64_t scriptOrigins = 0, scriptStructs = 0, fx = 0, triggers = 0, lights = 0, reflectionProbes = 0;
+            uint64_t scriptOrigins = 0, scriptStructs = 0, fx = 0, triggers = 0, lights = 0, reflectionProbes = 0, volumeDecals = 0;
             bool failed = false;
             bool fxDependenciesComplete = true;
             std::unordered_set<std::string> entityIds;
@@ -260,6 +260,7 @@ namespace ms
                     if (StartsWith(cls, "trigger_")) ++out.triggers;
                     if (cls == "light" || StartsWith(cls, "light_")) ++out.lights;
                     if (cls == "reflection_probe") ++out.reflectionProbes;
+                    if (cls == "misc_volume_decal") ++out.volumeDecals;
                 }
             }
             return { cls, model, fxdef };
@@ -292,6 +293,7 @@ namespace ms
             dst.scriptOrigins += src.scriptOrigins; dst.scriptStructs += src.scriptStructs; dst.fx += src.fx;
             dst.triggers += src.triggers; dst.lights += src.lights;
             dst.reflectionProbes += src.reflectionProbes;
+            dst.volumeDecals += src.volumeDecals;
             dst.failed = dst.failed || src.failed;
             dst.fxDependenciesComplete = dst.fxDependenciesComplete && src.fxDependenciesComplete;
         }
@@ -427,14 +429,15 @@ namespace ms
         put(StatId::Triggers, acc.triggers);
         next.values[static_cast<size_t>(StatId::Lights)] = { !acc.failed && acc.fxDependenciesComplete, acc.lights };
         put(StatId::ReflectionProbes, acc.reflectionProbes);
+        put(StatId::VolumeDecals, acc.volumeDecals);
         g_snapshot = next;
         const std::wstring currentMap = rp::CurrentMapPath();
         const int currentDepth = rp::host->PrefabDepth(rp::self);
         if (!currentMap.empty() && (currentMap != g_lastLoggedMap || currentDepth != g_lastLoggedDepth))
         {
-            rp::Log("counts: brushes=%llu patches=%llu vertices=%llu models=%llu script_models=%llu script_brushmodels=%llu script_origins=%llu script_structs=%llu fx=%llu triggers=%llu lights=%llu reflection_probes=%llu prefabs=%llu%s%s",
+            rp::Log("counts: brushes=%llu patches=%llu vertices=%llu models=%llu script_models=%llu script_brushmodels=%llu script_origins=%llu script_structs=%llu fx=%llu triggers=%llu lights=%llu reflection_probes=%llu volume_decals=%llu prefabs=%llu%s%s",
                 acc.brushes, acc.patches, acc.vertices, acc.models, acc.scriptModels, acc.scriptBrushModels, acc.scriptOrigins, acc.scriptStructs, acc.fx,
-                acc.triggers, acc.lights, acc.reflectionProbes, static_cast<unsigned long long>(ctx.prefabModels.size()),
+                acc.triggers, acc.lights, acc.reflectionProbes, acc.volumeDecals, static_cast<unsigned long long>(ctx.prefabModels.size()),
                 acc.failed ? " (incomplete map)" : "", acc.fxDependenciesComplete ? "" : " (incomplete FX dependencies)");
             g_lastLoggedMap = currentMap; g_lastLoggedDepth = currentDepth;
         }

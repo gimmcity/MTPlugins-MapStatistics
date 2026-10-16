@@ -25,7 +25,7 @@ namespace ms
             LoadSettings();
             if (!CreateSettingsUi()) { rp::Log("Map Statistics: the native settings UI is unavailable"); return 0; }
             const int hotkey = rp::host->RegisterHotkey(rp::self, VK_F12, MODTOOLS_MOD_CTRL | MODTOOLS_MOD_SHIFT, ToggleOverlay, nullptr);
-            rp::Log("Map Statistics 1.1.3 loaded; Ctrl+Shift+F12 toggle %s", hotkey ? "registered" : "not registered (shortcut conflict)");
+            rp::Log("Map Statistics 1.1.4 loaded; Ctrl+Shift+F12 toggle %s", hotkey ? "registered" : "not registered (shortcut conflict)");
             return 1;
         }
     }
@@ -45,7 +45,7 @@ extern "C" MODTOOLS_PLUGIN_EXPORT const ModToolsPluginApi* ModToolsPluginEntry(M
     rp::Bind(self, host);
     static ModToolsPluginApi api{};
     api.size = sizeof api; api.apiVersion = MODTOOLS_PLUGIN_API_VERSION;
-    api.name = "MapStatistics"; api.displayName = "Map Statistics"; api.version = "1.1.3"; api.author = "GimmCity";
+    api.name = "MapStatistics"; api.displayName = "Map Statistics"; api.version = "1.1.4"; api.author = "GimmCity";
     api.description = "Configurable on-demand map statistics rendered in Radiant's 3D camera viewport.";
     api.apps = MODTOOLS_APP_RADIANT;
     api.OnLoad = ms::OnLoad; api.OnUnload = ms::OnUnload;
