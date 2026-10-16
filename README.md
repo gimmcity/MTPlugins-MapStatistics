@@ -5,7 +5,7 @@ Map Statistics is a native x64 [MTPlugins](https://github.com/Aidan601/MTPlugins
 ## Features
 
 - On-demand brush, patch and serialized vertex counts.
-- Counts for models, script models, script brushmodels, script origins, script structs, FX, triggers, lights and reflection probes.
+- Counts for models, script models, script brushmodels, script origins, script structs, FX, triggers, lights, reflection probes and volume decals.
 - Recursively expands placed `misc_prefab` files while preventing recursion cycles.
 - Parses placed FX and nested FX runners for supported light elements.
 - Configurable overlay corner and text color.
@@ -13,7 +13,7 @@ Map Statistics is a native x64 [MTPlugins](https://github.com/Aidan601/MTPlugins
 - `Ctrl+Shift+F12` toggles the overlay.
 - Scans run only when **Refresh Statistics Now** is clicked; the render callback only displays the last snapshot.
 
-Version 1.1.3 removes the former **Entities** and **Materials** counters, including their settings and aggregation work.
+Version 1.1.4 adds a dedicated **Volume Decals** counter for `misc_volume_decal` entities.
 
 ## Counting definitions
 
@@ -26,6 +26,7 @@ Version 1.1.3 removes the former **Entities** and **Materials** counters, includ
 - **Triggers:** entities whose classname starts with `trigger_`.
 - **Lights:** `light` and `light_*` entities plus supported light elements in placed FX and recursively referenced FX runners.
 - **Reflection Probes:** entities whose classname is exactly `reflection_probe`.
+- **Volume Decals:** entities whose classname is exactly `misc_volume_decal`.
 - **Brushes:** classic plane-defined brush primitives in the current map and recursively referenced prefabs.
 - **Patches:** `mesh` and `curve` primitives in the current map and recursively referenced prefabs.
 - **Vertices:** distinct serialized plane-definition points per classic brush plus serialized `v` control vertices in mesh and curve primitives.
@@ -53,7 +54,7 @@ MapStatistics.dll
 MapStatistics.ini
 ```
 
-Start Radiant and confirm that **Map Statistics 1.1.3 [Radiant]** is enabled in MTPlugins. Use `Ctrl+Shift+F12` to toggle the overlay. When published through MTPlugins-Index, users should install it through **Browse plugins** instead of copying files manually.
+Start Radiant and confirm that **Map Statistics 1.1.4 [Radiant]** is enabled in MTPlugins. Use `Ctrl+Shift+F12` to toggle the overlay. When published through MTPlugins-Index, users should install it through **Browse plugins** instead of copying files manually.
 
 Open **Plugins > Map Statistics > Refresh Statistics** or click **Refresh Statistics Now** in the plugin settings whenever you want to rescan the current map. Loading a different map or entering/leaving a prefab clears the old snapshot until the next manual refresh.
 

@@ -1,5 +1,20 @@
 # Build results
 
+## Map Statistics 1.1.4 test candidate
+
+- Change: added a dedicated `Volume Decals` counter for entities whose classname is exactly `misc_volume_decal`, including entities found through recursively expanded prefabs.
+- Configuration: `Release | x64`
+- Compiler/linker: MSVC 14.16 (Visual Studio 2017 toolchain)
+- Windows SDK: 10.0.19041.0
+- Warnings: none
+- Errors: none
+- PE architecture: AMD64 / PE32+
+- Subsystem: Windows GUI DLL
+- Export: exactly one named export, `ModToolsPluginEntry`
+- SHA-256: `5443cb1cb86b5f9de4cf529a79bbcece22adc4f5a5768d27cf0c253d2880fa00`
+- Deployment: copied to the BO3 `bin\plugins\MapStatistics` directory while Radiant was not running; the installed INI was preserved.
+- Runtime status: the user confirmed that the deployed 1.1.4 test candidate loads and works correctly in Radiant, including the new Volume Decals count.
+
 ## Map Statistics 1.1.3
 
 - Configuration: `Release | x64`
